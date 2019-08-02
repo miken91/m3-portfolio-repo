@@ -15,8 +15,10 @@
 }
 
 .divider {
-    color: #00e5ff;
+    background-color: #00e5ff;
     margin: 5% 20%;
+    height: 2px;
+    border: 0;
 }
 
 .techList {
