@@ -1,0 +1,35 @@
+.footerStyle {
+    margin: 0;
+    padding: 0;
+    background-color: #3a4660;
+    color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footerStyle p:first-child {
+    padding-bottom: 0;
+    margin-bottom: 9px;
+}
+
+.footerStyle p {
+    padding-bottom: 0;
+    margin-bottom: 9px;
+    margin-top: 9px;
+}
+
+.footerStyle p:last-child {
+    margin-top: 9px;
+}
+
+.footerStyle p a {
+    text-decoration: none;
+    color: #F2F2F2;
+}
+
+.footerStyle p a:hover {
+    color: #00e5ff;
+}
+

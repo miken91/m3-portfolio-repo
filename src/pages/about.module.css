@@ -1,0 +1,46 @@
+.avatarTitle {
+    display: flex;
+    flex-direction: row;
+}
+
+.avatarTitle div {
+    display: flex;
+    align-items: center;
+}
+
+.aboutPage {
+    margin-top: 2.5%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.divider {
+    color: #00e5ff;
+    margin: 5% 20%;
+}
+
+.techList {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.techList li {
+    background-color: #00e5ff;
+    margin-right: 8px;
+}
+
+.techList li:first-child {
+    padding-left: 0px;
+}
+
+.linkStyle {
+    color: #3a4660;
+    text-decoration: none;
+}
+
+.linkStyle:hover {
+    color: #00e5ff;
+}

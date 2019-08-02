@@ -1,0 +1,45 @@
+
+
+.nameTitle:hover {
+    color: #00e5ff;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align-last: center;
+}
+
+.nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li:first-child {
+    padding-left: 0;
+}
+
+.nav ul li {
+    padding: 8px;
+}
+
+p {
+    font-size: large;
+}
+
+.listItem {
+    font-size: x-large;
+}
+
+.listItem:hover {
+    color: #00e5ff;
+    text-decoration: underline;
+}
+
+
+
