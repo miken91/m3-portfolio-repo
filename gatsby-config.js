@@ -11,14 +11,7 @@ module.exports = {
     letsTalk: 'Let\'s talk about potential freelance work, technology, or anything you want!'
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/images`,
-        name: `images`
-      },
-    },
-    `gatsby-plugin-material-ui`, 
+    `gatsby-plugin-material-ui`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
