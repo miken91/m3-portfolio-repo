@@ -8,11 +8,22 @@
     align-items: center;
 }
 
-.aboutPage {
-    margin-top: 2.5%;
-    margin-left: 20%;
-    margin-right: 20%;
+@media screen and (min-width: 980px) {
+    .aboutPage {
+        margin-top: 2.5%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 }
+
+@media screen and (max-width: 760px) {
+    .aboutPage {
+        margin-top: 2.5%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
 
 .divider {
     background-color: #00e5ff;
