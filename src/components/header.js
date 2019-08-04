@@ -11,7 +11,6 @@ export default props =>
               <FreeBreakfast style={{color:"#00e5ff"}} />
               <h1 style={{}}>{props.name}</h1>
           </ButtonBase>
-          <p>Hello, I'm a full stack software engineer from St.Louis, Missouri</p>
           <nav className={headerStyles.nav}>
               <ul>
                   <li><ButtonBase onClick={() => {navigate("/")}} className={headerStyles.listItem} disableTouchRipple>Projects</ButtonBase></li>
