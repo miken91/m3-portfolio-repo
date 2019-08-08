@@ -11,6 +11,7 @@ module.exports = {
     letsTalk: 'Let\'s talk about potential freelance work, technology, or anything you want!'
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-material-ui`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -20,7 +21,7 @@ module.exports = {
         spaceId: process.env.SPACE_ID,
         accessToken: process.env.ACCESS_TOKEN
       }
-    }
+    },
   ],
   /* Your site config here */
 }

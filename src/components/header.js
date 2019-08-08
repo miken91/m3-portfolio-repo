@@ -14,7 +14,7 @@ export default props =>
           <nav className={headerStyles.nav}>
               <ul>
                   <li><ButtonBase onClick={() => {navigate("/")}} className={headerStyles.listItem} disableTouchRipple>Projects</ButtonBase></li>
-                  <li><ButtonBase onClick={() => {navigate("/")}} className={headerStyles.listItem} disableTouchRipple>Blog</ButtonBase></li>
+                  <li><ButtonBase onClick={() => {navigate("/blog")}} className={headerStyles.listItem} disableTouchRipple>Blog</ButtonBase></li>
                   <li><ButtonBase onClick={() => {navigate("/about")}} className={headerStyles.listItem} disableTouchRipple>About</ButtonBase></li>
               </ul>
           </nav>
