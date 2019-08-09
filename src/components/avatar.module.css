@@ -1,0 +1,9 @@
+.avatarTitle {
+    display: flex;
+    flex-direction: row;
+}
+
+.avatarTitle div {
+    display: flex;
+    align-items: center;
+}

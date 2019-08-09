@@ -1,0 +1,22 @@
+.link {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.link:hover {
+    color: #00e5ff;
+}
+
+.date {
+    font-size: small
+}
+
+.description {
+    color: #00e5ff;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

@@ -33,3 +33,18 @@
     color: #00e5ff;
 }
 
+@media screen and (min-width: 980px) {
+    .layoutPage {
+        margin-top: 2.5%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .layoutPage {
+        margin-top: 2.5%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}

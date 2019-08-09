@@ -1,19 +1,26 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
+import { navigate } from "gatsby"
+import blogStyles from "./blog.module.css"
+import ButtonBase from "@material-ui/core/ButtonBase";
 
 const BlogPosts = ({ data }) => {
   const blogPosts = data.allContentfulBlogPost.edges;
   return (
     <Layout>
-    <h1>{"Here's a list of all blogposts!"}</h1>
-      <div className="blogposts">
+      
+    <h1>{"Blog"}</h1>
+      <div>
+        <ul>
         {blogPosts.map(({ node: post }) => (
-          <div key={post.id}>
-            <Link to={`/blogpost/${post.slug}`}>{post.title}</Link>
-          </div>
+          <li key={post.id}>
+            <ButtonBase className={blogStyles.link} onClick={() => {navigate(`/blogpost/${post.slug}`)}}>{post.title}</ButtonBase>
+            <p className={blogStyles.date}>{post.postDate}</p>
+            <p className={blogStyles.description}>{post.description}</p>
+          </li>
         ))}
-        <Link to="/">Go back to the homepage</Link>
+        </ul>
       </div>
     </Layout>
   );
@@ -23,21 +30,14 @@ export default BlogPosts;
 
 export const query = graphql`
   query BlogPostsPageQuery {
-    allContentfulBlogPost(limit: 1000) {
+    allContentfulBlogPost {
       edges {
         node {
           id
           title
+          postDate(formatString: "MMMM Do, YYYY")
+          description
           slug
-          body {
-            body
-          }
-          image {
-            file {
-              url
-            }
-          }
-          tags
         }
       }
     }

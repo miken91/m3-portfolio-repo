@@ -1,33 +1,19 @@
 import React from "react";
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
-import aboutStyles from "./about.module.css"
-import Divider from "@material-ui/core/Divider";
-
-const useStyles = makeStyles({
-  avatar: {
-    margin: 10,
-    width: 100,
-    height: 100
-  }
-})
+import aboutStyles from "./about.module.css";
+import AvatarComponent from "../components/avatar";
 
 export default ({data}) => {
   console.log(data);
-  const classes = useStyles();
   return (
     <Layout>
       <div className={aboutStyles.aboutPage}>
       {data.allContentfulAboutSection.edges.map(({ node }) => (
         <div key={node.id}>
-          <div className={aboutStyles.avatarTitle}>
-            <Avatar alt='avatar' src={node.avatar.fluid.src} className={classes.avatar}/>
-            <div>
-              <h3>{node.title}</h3>
-            </div>
-          </div>
+          <AvatarComponent imgSrc={node.avatar.fluid.src} title={node.title}></AvatarComponent>
           <div className={aboutStyles.aboutInfo}>
             <p>{node.about.about}</p>
             <p>{node.aboutSec2.aboutSec2}</p>
