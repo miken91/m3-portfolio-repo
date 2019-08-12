@@ -10,7 +10,7 @@ const BlogPosts = ({ data }) => {
   return (
     <Layout>
       
-    <h1>{"Blog"}</h1>
+    <h1>My Blog</h1>
       <div>
         <ul>
         {blogPosts.map(({ node: post }) => (

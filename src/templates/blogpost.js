@@ -20,11 +20,10 @@ const BlogPost = ({ data }) => {
   return (
       <Layout>
         <div className={blogpostStyles.blogPost}>
+            <Link className={blogpostStyles.backToBlog} to="/blog"> &lt;Back</Link>
             <h1>{title}</h1>
             <p className={blogpostStyles.date}>{postDate}</p>
             {documentToReactComponents(body.json, options)}
-            <Link to="/blog">View more posts</Link>
-            <Link to="/">Back to Home</Link>
         </div>
       </Layout>
   );

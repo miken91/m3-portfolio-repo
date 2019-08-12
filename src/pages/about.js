@@ -1,8 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import Avatar from "@material-ui/core/Avatar";
-import { makeStyles } from "@material-ui/core/styles";
 import aboutStyles from "./about.module.css";
 import AvatarComponent from "../components/avatar";
 

@@ -1,3 +1,13 @@
 .date {
     color: #00e5ff;
 }
+
+.backToBlog {
+    font-size: large;
+    color: initial;
+    text-decoration: none;
+}
+
+.backToBlog:hover {
+    color: #00e5ff;
+}
