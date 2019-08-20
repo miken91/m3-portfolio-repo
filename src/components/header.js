@@ -1,25 +1,82 @@
 import React from "react";
-import FreeBreakfast from "@material-ui/icons/FreeBreakfast";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import headerStyles from "./header.module.css";
 import { navigate } from "gatsby";
+import Logo from "../components/logo"
+import ButtonBase from "@material-ui/core/ButtonBase";
+import AppBar from "@material-ui/core/AppBar";
+import ToolBar from "@material-ui/core/Toolbar";
+import { makeStyles } from "@material-ui/core/styles";
 
-export default props =>
-  <div>
-      <div className={headerStyles.titleContainer}>
-          <ButtonBase onClick={() => {navigate("/")}} className={headerStyles.nameTitle} disableTouchRipple>
-              <FreeBreakfast style={{color:"#00e5ff"}} />
-              <h1 style={{}}>{props.name}</h1>
-          </ButtonBase>
-          <nav className={headerStyles.nav}>
-              <ul>
-                  <li><ButtonBase onClick={() => {navigate("/")}} className={headerStyles.listItem} disableTouchRipple>Projects</ButtonBase></li>
-                  <li><ButtonBase onClick={() => {navigate("/blog")}} className={headerStyles.listItem} disableTouchRipple>Blog</ButtonBase></li>
-                  <li><ButtonBase onClick={() => {navigate("/about")}} className={headerStyles.listItem} disableTouchRipple>About</ButtonBase></li>
-              </ul>
-          </nav>
-      </div>
-  </div>
+const useStyles = makeStyles(theme => ({
+    navLinkStyle: {
+        fontSize: "x-large",
+        fontWeight: "Bold",
+        color: theme.palette.secondary.contrastText,
+        "&:hover": {
+            color: theme.palette.primary.main + " !important"
+        },
+        marginLeft: 8
+    }, 
+    rootGridContainer: {
+        marginTop: "8px",
+        paddingTop: "8px"
+    },
+    navLinks: {
+        marginTop: 32,
+        marginBottom: 32,
+        display: "flex",
+        justifyContent: "space-between"
+    },
+    root: {
+        flexGrow: 1,
+        marginTop: 32,
+        marginBottom: 32
+    },
+    appBar: {
+        position: "static",
+        background: "transparent",
+        boxShadow: "none",
+        "&:hover": {
+            background: theme.palette.secondary.contrastText,
+            '& #logo' : {
+                color: theme.palette.secondary.main
+            },
+            '& #projects' : {
+                color: theme.palette.secondary.main
+            },
+            '& #blog' : {
+                color: theme.palette.secondary.main
+            },
+            '& #about' : {
+                color: theme.palette.secondary.main
+            }
+        },
+        
+    }
+}));
+
+export default (props) => {
+    const classes = useStyles();
+    
+return (
+    <div>
+    <AppBar id="parent" className={classes.appBar}>
+        <ToolBar>
+        <div className={classes.root}>
+            <Logo></Logo>
+        </div>
+        <div className={classes.navLinks}>
+            <ButtonBase id="projects" className={classes.navLinkStyle} disableTouchRipple onClick={() => {navigate("/projects")}}>Projects</ButtonBase>
+            <ButtonBase id="blog"className={classes.navLinkStyle} disableTouchRipple onClick={() => {navigate("/blog")}}>Blog</ButtonBase>
+            <ButtonBase id="about"className={classes.navLinkStyle} disableTouchRipple onClick={() => {navigate("/about")}}>About</ButtonBase>
+        </div>
+        </ToolBar>
+    </AppBar>
+    </div>
+)}
+
+        
+    
+
 
 
         

@@ -12,7 +12,18 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-material-ui`,
+    {
+     resolve: `gatsby-plugin-material-ui`,
+     options: {
+       theme: {
+         palette: {
+           primary: {
+              main: "#00e5ff",
+           }
+         },
+       },
+     },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

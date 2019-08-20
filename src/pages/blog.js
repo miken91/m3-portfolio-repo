@@ -1,27 +1,58 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import { navigate } from "gatsby"
-import blogStyles from "./blog.module.css"
 import ButtonBase from "@material-ui/core/ButtonBase";
+import { makeStyles } from "@material-ui/styles";
+import Container from "@material-ui/core/Container";
 
+const useStyles = makeStyles(theme => ({
+  blogPostTitle: {
+    fontSize: "x-large",
+    fontWeight: "bold",
+    color: theme.palette.secondary.contrastText,
+    "&:hover": {
+      color: theme.palette.primary.main
+    }
+  },
+  blogPostListItem: {
+    listStyle: "none"
+  },
+  blogPostList: {
+    margin: 0,
+    padding: 0,
+
+  },
+  blogTitle: {
+    color: theme.palette.primary.dark
+  },
+  description: {
+    fontWeight: "bold",
+    color: theme.palette.secondary.contrastText
+  },
+  postDate: {
+    color: theme.palette.primary.light
+  }
+}))
 const BlogPosts = ({ data }) => {
+  const classes = useStyles();
   const blogPosts = data.allContentfulBlogPost.edges;
   return (
     <Layout>
-      
-    <h1>My Blog</h1>
-      <div>
-        <ul>
-        {blogPosts.map(({ node: post }) => (
-          <li key={post.id}>
-            <ButtonBase className={blogStyles.link} onClick={() => {navigate(`/blogpost/${post.slug}`)}}>{post.title}</ButtonBase>
-            <p className={blogStyles.date}>{post.postDate}</p>
-            <p className={blogStyles.description}>{post.description}</p>
-          </li>
-        ))}
-        </ul>
-      </div>
+      <Container maxWidth="sm">
+        <h1 className={classes.blogTitle}>My Blog</h1>
+        <div>
+          <ul className={classes.blogPostList}>
+          {blogPosts.map(({ node: post }) => (
+            <li className={classes.blogPostListItem} key={post.id}>
+              <ButtonBase className={classes.blogPostTitle} onClick={() => {navigate(`/blogpost/${post.slug}`)}}>{post.title}</ButtonBase>
+              <p className={classes.postDate}>{post.postDate}</p>
+              <p className={classes.description}>{post.description}</p>
+            </li>
+          ))}
+          </ul>
+        </div>
+      </Container>
     </Layout>
   );
 };

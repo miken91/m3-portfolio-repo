@@ -1,18 +1,27 @@
 import React from "react";
-import Header from "../components/header";
-import layoutStyles from "./layout.module.css";
+import Footer from "../components/footer";
+import { makeStyles } from "@material-ui/core/styles";
 
-export default ({ children }) => (
-  <div className={layoutStyles.container}>
-      <Header name='Michael Noel' about='About' projects='Projects' contact='Contact'></Header>
-      <div className={layoutStyles.layoutPage}>
-        {children}
-      </div>
-      <footer className={layoutStyles.footerStyle}>
-        <p>Built with <a href='https://www.gatsbyjs.org/'>Gatsby </a> 
-        and hosted on <a href="https://www.netlify.com/"> Netlify. </a>
-        This code is open source and available on 
-        <a href='https://github.com/miken91'> github.</a></p>
-      </footer>
-  </div>
-)
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: "flex",
+    minHeight: "100vh",
+    flexDirection: "column"
+  },
+  content: {
+    marginTop: 64,
+    paddingTop: 16,
+    flexGrow: "1"
+  }
+}))
+
+export default ({ children }) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.container}>
+        <div className={classes.content}>
+            {children}
+        </div>
+        <Footer></Footer>
+    </div>
+  )}
