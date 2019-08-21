@@ -18,10 +18,13 @@ const useStyles = makeStyles(theme => ({
 export default ({ children }) => {
   const classes = useStyles();
   return (
+    <React.Fragment>
+    <Header></Header>
     <div className={classes.container}>
         <div className={classes.content}>
             {children}
         </div>
         <Footer></Footer>
     </div>
+    </React.Fragment>
   )}

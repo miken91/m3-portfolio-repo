@@ -5,7 +5,6 @@ import Header from "./src/components/header";
 
 export default ({ element }) => (
     <ThemeProvider theme={theme}>
-        <Header></Header>
         {element}
     </ThemeProvider>
 )

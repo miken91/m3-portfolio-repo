@@ -22,9 +22,6 @@ module.exports = {
            }
          },
        },
-       stylesProvider: {
-         injectFirst: true,
-       },
      },
     },
     `gatsby-transformer-sharp`,
