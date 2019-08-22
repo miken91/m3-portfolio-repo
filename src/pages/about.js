@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
 import AvatarComponent from "../components/avatar";
 import { makeStyles } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
@@ -32,7 +31,6 @@ const useStyles = makeStyles(theme => ({
 export default ({data}) => {
   const classes = useStyles();
   return (
-    <Layout>
       <Container  maxWidth="md">
         <div>
         {data.allContentfulAboutSection.edges.map(({ node }) => (
@@ -56,7 +54,6 @@ export default ({data}) => {
           <p className={classes.emailStyles}>Send me an <a className={classes.emailLinkStyle} href='mailto:hello@mike.e.noel3@gmail.com'>email!</a></p>
         </div>
       </Container>
-    </Layout>
   )
 }
 

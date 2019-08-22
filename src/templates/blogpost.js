@@ -31,16 +31,14 @@ const BlogPost = ({ data }) => {
     }
   }
   return (
-      <Layout>
-        <Container maxWidth="sm">
-          <div>
-              <Link className={classes.backButton} to="/blog"> &lt;Back</Link>
-              <h1 className={classes.postTitle}>{title}</h1>
-              <p className={classes.postDate}>{postDate}</p>
-              {documentToReactComponents(body.json, options)}
-          </div>
-        </Container>
-      </Layout>
+      <Container maxWidth="sm">
+        <div>
+            <Link className={classes.backButton} to="/blog"> &lt;Back</Link>
+            <h1 className={classes.postTitle}>{title}</h1>
+            <p className={classes.postDate}>{postDate}</p>
+            {documentToReactComponents(body.json, options)}
+        </div>
+      </Container>
   );
 };
 

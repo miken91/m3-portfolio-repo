@@ -5,3 +5,12 @@ body {
     padding: 0;
     background: #222629;
 }
+
+html {
+    box-sizing: border-box;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }

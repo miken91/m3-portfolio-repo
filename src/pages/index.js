@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../components/layout";
 import { graphql } from "gatsby";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Grid from "@material-ui/core/Grid";
@@ -8,10 +7,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const { BLOCKS, MARKS } = require("@contentful/rich-text-types");
 
 const useStyles = makeStyles(theme => ({
-    image: {
-        marginTop: "0.67em",
-        maxWidth: 425
-    },
     content: {
         maxWidth: 425
     },
@@ -36,30 +31,16 @@ export default ({data}) => {
         }
     };
     return(
-    <Layout>
-        <Container maxWidth="md">
-            <Grid container direction="row" justify="space-evenly">
-                <Grid item>
-                    <img className={classes.image} src={heroImage.file.url} alt=""></img>
-                </Grid>
-                <Grid item>
-                    <div className={classes.content}>
-                        {documentToReactComponents(landingPageText.json, options)}
-                    </div>
-                </Grid>
-            </Grid>
-        </Container>
-    </Layout>
+    <Container maxWidth="md">
+        <div className={classes.content}>
+            {documentToReactComponents(landingPageText.json, options)}
+        </div>
+    </Container>
 )}
 
 export const query = graphql`
 query LandingPageQuery {
     contentfulLandingPage {
-      heroImage {
-        file {
-            url
-        }
-      }
       landingPageText {
         json
       }
