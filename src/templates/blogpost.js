@@ -11,26 +11,27 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.dark
   }, 
   postDate: {
-    color: theme.palette.secondary.dark
+    color: theme.palette.primary.light
   },
   postTitle: {
+    color: theme.palette.primary.main,
+    fontSize: "3em"
+  },
+  paragraph: {
     color: theme.palette.secondary.contrastText
   }
 }))
 const BlogPost = ({ data }) => {
   const classes = useStyles();
   const { title, body, postDate } = data.contentfulBlogPost;
+  const Paragraph = ({ children }) => <p className={classes.paragraph}>{children}</p>
   const options = {
     renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: node => {
-        // console.log(node)
-        let { title, file } = node.data.target.fields
-        // console.log(file["en-US"].url)
-        return <img alt={title} className src={file["en-US"].url} />
-      }
+      [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>
     }
   }
   return (
+    <Layout>
       <Container maxWidth="sm">
         <div>
             <Link className={classes.backButton} to="/blog"> &lt;Back</Link>
@@ -39,6 +40,7 @@ const BlogPost = ({ data }) => {
             {documentToReactComponents(body.json, options)}
         </div>
       </Container>
+    </Layout>
   );
 };
 

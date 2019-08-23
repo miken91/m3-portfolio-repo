@@ -1,90 +1,119 @@
 import React from "react";
 import { graphql } from "gatsby";
-import AvatarComponent from "../components/avatar";
-import { makeStyles } from "@material-ui/core";
-import Divider from "@material-ui/core/Divider";
-import Container from "@material-ui/core/Container";
+import { makeStyles, Grid, Container } from "@material-ui/core";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Layout from "../components/layout";
+import Img from "gatsby-image";
+const { BLOCKS, INLINES, MARKS } = require("@contentful/rich-text-types");
 
 const useStyles = makeStyles(theme => ({
-  sectionHeader: {
-    color: theme.palette.secondary.dark
+  imageGridContainer: {
+    maxWidth: 400
   },
-  technologiesList: {
-    listStyle: "none",
+  contentGridItem: {
+    maxWidth: 400
+  },
+  header1: {
+    fontSize: "2.5em",
+    marginTop: 0,
+    color: theme.palette.primary.main
+  },
+  header2: {
+    color: theme.palette.primary.main
+  },
+  paragraph: {
+    color: theme.palette.secondary.contrastText,
+    fontSize: "large"
+  },
+  list: {
     display: "flex",
-    flexDirection: "row",
+    flexWrap: "wrap",
+    direction: "row",
+    listStyleType: "none",
     marginLeft: 0,
     paddingLeft: 0
   },
-  technologiesListLink: {
-    background: theme.palette.secondary.light,
-    marginRight: 8
+  listItem: {
+    color: theme.palette.primary.light,
+    marginRight: ".67em",
+    "& p": {
+      color: theme.palette.primary.light
+    }
   },
-  emailStyles: {
-    fontSize: "large"
-  }, 
-  emailLinkStyle: {
+  link: {
     textDecoration: "none",
-    color: theme.palette.secondary.dark
+    color: theme.palette.secondary.contrastText,
+    "&:hover": {
+      color: theme.palette.primary.main
+    }
+  },
+  gridContainer: {
+    marginBottom: "2em"
   }
+
 }))
 export default ({data}) => {
   const classes = useStyles();
+  const {images, childContentfulAboutSectionAboutRichTextNode} = data.contentfulAboutSection;
+  const Header1 = ({ children }) => <h1 className={classes.header1}>{children}</h1>;
+  const Header2 = ({ children }) => <h2 className={classes.header2}>{children}</h2>;
+  const Paragraph = ({ children }) => <p className={classes.paragraph}>{children}</p>;
+  const List = ({ children }) => <ul className={classes.list}>{children}</ul>;
+  const ListItem = ({ children }) => <li className={classes.listItem}>{children}</li>;
+  const Link = ({href, children }) => <a href={href} className={classes.link}>{children}</a>
+  const options = {
+      renderNode: {
+          [BLOCKS.HEADING_1]: (node, children) => <Header1>{children}</Header1>,
+          [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
+          [BLOCKS.UL_LIST]: (node, children) => <List>{children}</List>,
+          [BLOCKS.LIST_ITEM]: (node, children) => <ListItem>{children}</ListItem>,
+          [BLOCKS.HEADING_2]: (node, children) => <Header2>{children}</Header2>,
+          [INLINES.HYPERLINK]: (node, children) => {
+          const href = node.data.uri;
+          return <Link href={href}>{children}</Link>
+        }
+      }
+  };
   return (
     <Layout>
       <Container  maxWidth="md">
-        <div>
-        {data.allContentfulAboutSection.edges.map(({ node }) => (
-          <div key={node.id}>
-            <AvatarComponent imgSrc={node.avatar.fluid.src} title={node.title}></AvatarComponent>
-            <div>
-              <p>{node.about.about}</p>
-              <p>{node.aboutSec2.aboutSec2}</p>
-            </div>
-          </div>
-        ))}
-        <Divider></Divider>
-        <h3 className={classes.sectionHeader}>Here is a list of technologies I've had the pleasure to leverage:</h3>
-          <ul className={classes.technologiesList}>
-          {data.site.siteMetadata.technologiesList.map((tech, index ) => (
-            <li className={classes.technologiesListLink} key={index}>{tech}</li>
-          ))}
-          </ul>
-          <Divider></Divider>
-          <h3 className={classes.sectionHeader}>{data.site.siteMetadata.letsTalk}</h3>
-          <p className={classes.emailStyles}>Send me an <a className={classes.emailLinkStyle} href='mailto:hello@mike.e.noel3@gmail.com'>email!</a></p>
-        </div>
+        <Grid container direction="row"  justify="space-around" className={classes.gridContainer}>
+          <Grid container item direction="column" className={classes.imageGridContainer} spacing={1}>
+            <Grid container item>
+              <Grid item style={{width: "100%"}}>
+                <Img fluid={images[0].fluid} />
+              </Grid>
+            </Grid>
+            <Grid container direction="row" justify="space-between" className={classes.imageGridContainer} item>
+              <Grid item style={{width: "49%"}}>
+                <Img fluid={images[1].fluid} />
+              </Grid>
+              <Grid item style={{width: "49%"}}>
+                <Img fluid={images[2].fluid} />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container item className={classes.contentGridItem}>
+            <Grid item style={{width: "100%"}}>
+              {documentToReactComponents(childContentfulAboutSectionAboutRichTextNode.json, options)}
+            </Grid>
+          </Grid>
+        </Grid>
       </Container>
     </Layout>
   )
 }
 
 export const query = graphql`
-query AboutQuery {
-  allContentfulAboutSection {
-    edges {
-      node {
-        id
-        avatar {
-          fluid {
-            src
-          }
-        }
-        title
-        about {
-          about
-        }
-        aboutSec2 {
-          aboutSec2
-        }
+query aboutQuery {
+  contentfulAboutSection {
+    images {
+      fluid(maxWidth: 400) {
+        ...GatsbyContentfulFluid
       }
     }
-  }
-  site {
-    siteMetadata {
-      technologiesList
-      letsTalk
+    childContentfulAboutSectionAboutRichTextNode {
+      json
     }
   }
 }`

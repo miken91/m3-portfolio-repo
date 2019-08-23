@@ -1,20 +1,19 @@
 import React from "react";
 import { graphql, navigate } from "gatsby";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container"
 import Layout from "../components/layout"
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import AniLink from "gatsby-plugin-transition-link/AniLink";
 const { BLOCKS, MARKS } = require("@contentful/rich-text-types");
 
 const useStyles = makeStyles(theme => ({
     content: {
-        maxWidth: 425
+        maxWidth: 500
     },
     header: {
-        marginBottom: "20%",
+        fontSize: "3em",
+        marginBottom: "10%",
         color: theme.palette.primary.main
     },
     paragraph: {

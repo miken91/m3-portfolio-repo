@@ -7,8 +7,6 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    technologiesList: ['Java', 'javaScript', 'Angular', 'React', 'Gatsby', 'Spring'],
-    letsTalk: 'Let\'s talk about potential freelance work, technology, or anything you want!'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

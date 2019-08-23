@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
 
   },
   blogTitle: {
+    fontSize: "3em",
     color: theme.palette.primary.dark
   },
   description: {
