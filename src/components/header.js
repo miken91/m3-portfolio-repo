@@ -11,8 +11,10 @@ const useStyles = makeStyles(theme => ({
         fontSize: "x-large",
         fontWeight: "Bold",
         color: theme.palette.secondary.contrastText,
-        "&:hover": {
-            color: theme.palette.primary.main + " !important"
+        "@media not all and (pointer: coarse)": {
+            "&:hover": {
+                color: theme.palette.primary.main + " !important"
+            }
         },
         marginLeft: 8
     }, 
@@ -23,8 +25,10 @@ const useStyles = makeStyles(theme => ({
         textDecoration: "none",
         fontSize: "3em",
         color: theme.palette.secondary.contrastText,
-        "&:hover": {
-            color: theme.palette.primary.main
+        "@media not all and (pointer: coarse)": {
+            "&:hover": {
+                color: theme.palette.primary.main
+            }
         }
     },
     root: {
@@ -36,13 +40,15 @@ const useStyles = makeStyles(theme => ({
         position: "fixed",
         background: "transparent",
         boxShadow: "none",
-        "&:hover": {
-            background: theme.palette.secondary.contrastText,
-            '& #logo' : {
-                color: theme.palette.secondary.main
-            },
-            '& #menu' : {
-                color: theme.palette.secondary.main
+        "@media not all and (pointer: coarse)": {
+            "&:hover": {
+                background: theme.palette.secondary.contrastText,
+                '& #logo' : {
+                    color: theme.palette.secondary.main
+                },
+                '& #menu' : {
+                    color: theme.palette.secondary.main
+                }
             }
         },
     },

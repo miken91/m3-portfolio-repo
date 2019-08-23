@@ -4,6 +4,7 @@ import { navigate } from "gatsby"
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { makeStyles } from "@material-ui/styles";
 import Container from "@material-ui/core/Container";
+import Layout from "../components/layout";
 
 const useStyles = makeStyles(theme => ({
   blogPostTitle: {
@@ -37,20 +38,22 @@ const BlogPosts = ({ data }) => {
   const classes = useStyles();
   const blogPosts = data.allContentfulBlogPost.edges;
   return (
-    <Container maxWidth="sm">
-      <h1 className={classes.blogTitle}>My Blog</h1>
-      <div>
-        <ul className={classes.blogPostList}>
-        {blogPosts.map(({ node: post }) => (
-          <li className={classes.blogPostListItem} key={post.id}>
-            <ButtonBase className={classes.blogPostTitle} onClick={() => {navigate(`/blogpost/${post.slug}`)}}>{post.title}</ButtonBase>
-            <p className={classes.postDate}>{post.postDate}</p>
-            <p className={classes.description}>{post.description}</p>
-          </li>
-        ))}
-        </ul>
-      </div>
-    </Container>
+    <Layout>
+      <Container maxWidth="sm">
+        <h1 className={classes.blogTitle}>My Blog</h1>
+        <div>
+          <ul className={classes.blogPostList}>
+          {blogPosts.map(({ node: post }) => (
+            <li className={classes.blogPostListItem} key={post.id}>
+              <ButtonBase className={classes.blogPostTitle} onClick={() => {navigate(`/blogpost/${post.slug}`)}}>{post.title}</ButtonBase>
+              <p className={classes.postDate}>{post.postDate}</p>
+              <p className={classes.description}>{post.description}</p>
+            </li>
+          ))}
+          </ul>
+        </div>
+      </Container>
+    </Layout>
   );
 };
 

@@ -9,8 +9,10 @@ const useStyles = makeStyles(theme => ({
         fontSize: 'xx-large',
         margin: 0,
         color: theme.palette.secondary.contrastText,
-        "&:hover": {
-            color: theme.palette.primary.main + " !important"
+        "@media not all and (pointer: coarse)": {
+            "&:hover": {
+                color: theme.palette.primary.main + " !important"
+            }
         }
     },
     cupColor: {

@@ -1,9 +1,12 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container"
+import Layout from "../components/layout"
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 const { BLOCKS, MARKS } = require("@contentful/rich-text-types");
 
 const useStyles = makeStyles(theme => ({
@@ -17,6 +20,9 @@ const useStyles = makeStyles(theme => ({
     paragraph: {
         color: theme.palette.secondary.contrastText,
         fontSize: "large"
+    },
+    projectsButton: {
+        borderColor: theme.palette.primary.light
     }
 }));
 export default ({data}) => {
@@ -31,11 +37,16 @@ export default ({data}) => {
         }
     };
     return(
-    <Container maxWidth="md">
-        <div className={classes.content}>
-            {documentToReactComponents(landingPageText.json, options)}
-        </div>
-    </Container>
+    <Layout>
+        <Container maxWidth="md">
+            <div className={classes.content}>
+                {documentToReactComponents(landingPageText.json, options)}
+            </div>
+            <Button onClick={() => {navigate("/projects")}} variant="contained" color="primary" className={classes.projectsButton}>
+                Take a look at my projects ->
+            </Button>
+        </Container>
+    </Layout>
 )}
 
 export const query = graphql`
