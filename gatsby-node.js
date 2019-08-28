@@ -15,6 +15,16 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+        allContentfulProjects {
+          edges {
+            node {
+              title
+              projectDescription
+              techStack
+              slug
+            }
+          }
+        }
       }
     `
   ).then(result => {
@@ -23,7 +33,8 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       // Resolve the paths to our template
-      const blogPostTemplate = path.resolve("./src/templates/blogpost.js");
+      const blogPostTemplate = path.resolve("./src/templates/blogPost.js");
+      const projectPageTemplate = path.resolve("./src/templates/projectDescription.js")
 
       // Then for each result we create a page.
       result.data.allContentfulBlogPost.edges.forEach(edge => {
@@ -31,11 +42,21 @@ exports.createPages = ({ graphql, actions }) => {
           path: `/blogpost/${edge.node.slug}/`,
           component: slash(blogPostTemplate),
           context: {
-                        slug: edge.node.slug,
+            slug: edge.node.slug,
             id: edge.node.id
           }
         });
       });
+      result.data.allContentfulProjects.edges.forEach(edge => {
+        createPage({
+          path: `/projects/${edge.node.slug}/`,
+          component: slash(projectPageTemplate),
+          context: {
+            slug: edge.node.slug,
+            id: edge.node.id
+          }
+        })
+      })
     })
     .catch(error => {
       console.log("Error retrieving contentful data", error);

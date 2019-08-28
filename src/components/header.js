@@ -1,5 +1,5 @@
 import * as React from "react";
-import { navigate, Link } from "gatsby";
+import { Link } from "gatsby";
 import Logo from "../components/logo"
 import ButtonBase from "@material-ui/core/ButtonBase";
 import AppBar from "@material-ui/core/AppBar";
@@ -59,7 +59,6 @@ const useStyles = makeStyles(theme => ({
         right: 0,
         bottom: 0,
         margin: 0,
-        padding: 0,
         zIndex: 99,
         height: "100vh",
         width: "100vw",
@@ -76,7 +75,6 @@ const useStyles = makeStyles(theme => ({
         right: 0,
         bottom: 0,
         margin: 0,
-        padding: 0,
         zIndex: 99,
         height: "100vh",
         width: "100vw",

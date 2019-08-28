@@ -4,7 +4,7 @@ import { makeStyles, Grid, Container } from "@material-ui/core";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Layout from "../components/layout";
 import Img from "gatsby-image";
-const { BLOCKS, INLINES, MARKS } = require("@contentful/rich-text-types");
+const { BLOCKS, INLINES } = require("@contentful/rich-text-types");
 
 const useStyles = makeStyles(theme => ({
   imageGridContainer: {

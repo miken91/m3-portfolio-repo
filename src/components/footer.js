@@ -12,12 +12,15 @@ const useStyles = makeStyles(theme => ({
         "&:hover": {
           color: theme.palette.primary.main
         }
+    },
+    footer: {
+      marginTop: "3em"
     }
   }))
 export default () => {
     const classes = useStyles();
     return (
-        <footer>
+        <footer className={classes.footer}>
             <div>
                 <p className={classes.footerStyle}>Built with <a className={classes.footerLinkStyle} href='https://www.gatsbyjs.org/'>Gatsby </a> 
                 and hosted on <a className={classes.footerLinkStyle} href="https://www.netlify.com/"> Netlify. </a>

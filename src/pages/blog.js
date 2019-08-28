@@ -16,7 +16,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   blogPostListItem: {
-    listStyle: "none"
+    listStyle: "none",
+    marginBottom: "3em"
   },
   blogPostList: {
     margin: 0,
@@ -25,7 +26,8 @@ const useStyles = makeStyles(theme => ({
   },
   blogTitle: {
     fontSize: "3em",
-    color: theme.palette.primary.dark
+    color: theme.palette.primary.dark,
+    marginBottom: "1.5em"
   },
   description: {
     fontWeight: "bold",

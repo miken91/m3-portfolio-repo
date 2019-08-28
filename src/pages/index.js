@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container"
 import Layout from "../components/layout"
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-const { BLOCKS, MARKS } = require("@contentful/rich-text-types");
+const { BLOCKS } = require("@contentful/rich-text-types");
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 }));
 export default ({data}) => {
     const classes = useStyles();
-    const {heroImage, landingPageText} = data.contentfulLandingPage;
+    const { landingPageText } = data.contentfulLandingPage;
     const Header = ({ children }) => <h1 className={classes.header}>{children}</h1>;
     const Paragraph = ({ children }) => <p className={classes.paragraph}>{children}</p>
     const options = {
