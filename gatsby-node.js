@@ -33,7 +33,7 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       // Resolve the paths to our template
-      const blogPostTemplate = path.resolve("./src/templates/blogPost.js");
+      const blogPostTemplate = path.resolve("./src/templates/blogpost.js");
       const projectPageTemplate = path.resolve("./src/templates/projectDescription.js")
 
       // Then for each result we create a page.
