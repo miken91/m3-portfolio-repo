@@ -71,7 +71,7 @@ export default (props) => {
                         <ul className={classes.list}> 
                         <div className={classes.techTitle}>Tech: </div>
                             {props.project.techStack.map((tech) => 
-                                <li className={classes.listItem}>{tech}</li>
+                                <li key={tech} className={classes.listItem}>{tech}</li>
                             )}
                         </ul>
                     </Grid>
