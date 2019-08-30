@@ -5,6 +5,7 @@ import Container from "@material-ui/core/Container"
 import Layout from "../components/layout"
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import { Helmet } from "react-helmet";
 const { BLOCKS } = require("@contentful/rich-text-types");
 
 const useStyles = makeStyles(theme => ({
@@ -36,16 +37,23 @@ export default ({data}) => {
         }
     };
     return(
-    <Layout>
-        <Container maxWidth="md">
-            <div className={classes.content}>
-                {documentToReactComponents(landingPageText.json, options)}
-            </div>
-            <Button onClick={() => {navigate("/projects")}} variant="contained" color="primary" className={classes.projectsButton}>
-                Take a look at my projects ->
-            </Button>
-        </Container>
-    </Layout>
+    <React.Fragment>
+        <Helmet>
+            <title>{data.site.siteMetadata.title}</title>
+            <meta name="description" content={data.site.siteMetadata.description}/>
+            <meta name="author" content={data.site.siteMetadata.author}/>
+        </Helmet>
+        <Layout>
+            <Container maxWidth="md">
+                <div className={classes.content}>
+                    {documentToReactComponents(landingPageText.json, options)}
+                </div>
+                <Button onClick={() => {navigate("/projects")}} variant="contained" color="primary" className={classes.projectsButton}>
+                    Take a look at my projects ->
+                </Button>
+            </Container>
+        </Layout>
+    </React.Fragment>
 )}
 
 export const query = graphql`
@@ -55,6 +63,12 @@ query LandingPageQuery {
         json
       }
     }
-  }
-`
+    site {
+        siteMetadata {
+          title
+          description
+          author
+        }
+    }
+}`
 

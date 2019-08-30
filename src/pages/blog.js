@@ -5,6 +5,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import { makeStyles } from "@material-ui/styles";
 import Container from "@material-ui/core/Container";
 import Layout from "../components/layout";
+import { Helmet } from "react-helmet";
 
 const useStyles = makeStyles(theme => ({
   blogPostTitle: {
@@ -41,22 +42,29 @@ const BlogPosts = ({ data }) => {
   const classes = useStyles();
   const blogPosts = data.allContentfulBlogPost.edges;
   return (
-    <Layout>
-      <Container maxWidth="sm">
-        <h1 className={classes.blogTitle}>My Blog</h1>
-        <div>
-          <ul className={classes.blogPostList}>
-          {blogPosts.map(({ node: post }) => (
-            <li className={classes.blogPostListItem} key={post.id}>
-              <ButtonBase className={classes.blogPostTitle} onClick={() => {navigate(`/blogpost/${post.slug}`)}}>{post.title}</ButtonBase>
-              <p className={classes.postDate}>{post.postDate}</p>
-              <p className={classes.description}>{post.description}</p>
-            </li>
-          ))}
-          </ul>
-        </div>
-      </Container>
-    </Layout>
+    <React.Fragment>
+      <Helmet>
+            <title>{data.site.siteMetadata.title}</title>
+            <meta name="description" content={data.site.siteMetadata.description}/>
+            <meta name="author" content={data.site.siteMetadata.author}/>
+      </Helmet>
+      <Layout>
+        <Container maxWidth="sm">
+          <h1 className={classes.blogTitle}>My Blog</h1>
+          <div>
+            <ul className={classes.blogPostList}>
+            {blogPosts.map(({ node: post }) => (
+              <li className={classes.blogPostListItem} key={post.id}>
+                <ButtonBase className={classes.blogPostTitle} onClick={() => {navigate(`/blogpost/${post.slug}`)}}>{post.title}</ButtonBase>
+                <p className={classes.postDate}>{post.postDate}</p>
+                <p className={classes.description}>{post.description}</p>
+              </li>
+            ))}
+            </ul>
+          </div>
+        </Container>
+      </Layout>
+    </React.Fragment>
   );
 };
 
@@ -73,6 +81,13 @@ export const query = graphql`
           description
           slug
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
+        description
+        author
       }
     }
   }

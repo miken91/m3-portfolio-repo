@@ -4,6 +4,7 @@ import { makeStyles, Grid, Container } from "@material-ui/core";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Layout from "../components/layout";
 import Img from "gatsby-image";
+import { Helmet } from "react-helmet";
 const { BLOCKS, INLINES } = require("@contentful/rich-text-types");
 
 const useStyles = makeStyles(theme => ({
@@ -75,32 +76,39 @@ export default ({data}) => {
       }
   };
   return (
-    <Layout>
-      <Container  maxWidth="md">
-        <Grid container direction="row"  justify="space-around" className={classes.gridContainer}>
-          <Grid container item direction="column" className={classes.imageGridContainer} spacing={1}>
-            <Grid container item>
+    <React.Fragment>
+      <Helmet>
+            <title>{data.site.siteMetadata.title}</title>
+            <meta name="description" content={data.site.siteMetadata.description}/>
+            <meta name="author" content={data.site.siteMetadata.author}/>
+      </Helmet>
+      <Layout >
+        <Container  maxWidth="md">
+          <Grid container direction="row"  justify="space-around" className={classes.gridContainer}>
+            <Grid container item direction="column" className={classes.imageGridContainer} spacing={1}>
+              <Grid container item>
+                <Grid item style={{width: "100%"}}>
+                  <Img fluid={images[0].fluid} />
+                </Grid>
+              </Grid>
+              <Grid container direction="row" justify="space-between" className={classes.imageGridContainer} item>
+                <Grid item style={{width: "49%"}}>
+                  <Img fluid={images[1].fluid} />
+                </Grid>
+                <Grid item style={{width: "49%"}}>
+                  <Img fluid={images[2].fluid} />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid container item className={classes.contentGridItem}>
               <Grid item style={{width: "100%"}}>
-                <Img fluid={images[0].fluid} />
-              </Grid>
-            </Grid>
-            <Grid container direction="row" justify="space-between" className={classes.imageGridContainer} item>
-              <Grid item style={{width: "49%"}}>
-                <Img fluid={images[1].fluid} />
-              </Grid>
-              <Grid item style={{width: "49%"}}>
-                <Img fluid={images[2].fluid} />
+                {documentToReactComponents(childContentfulAboutSectionAboutRichTextNode.json, options)}
               </Grid>
             </Grid>
           </Grid>
-          <Grid container item className={classes.contentGridItem}>
-            <Grid item style={{width: "100%"}}>
-              {documentToReactComponents(childContentfulAboutSectionAboutRichTextNode.json, options)}
-            </Grid>
-          </Grid>
-        </Grid>
-      </Container>
-    </Layout>
+        </Container>
+      </Layout>
+    </React.Fragment>
   )
 }
 
@@ -114,6 +122,13 @@ query aboutQuery {
     }
     childContentfulAboutSectionAboutRichTextNode {
       json
+    }
+  }
+  site {
+    siteMetadata {
+      title
+      description
+      author
     }
   }
 }`

@@ -3,6 +3,8 @@ import { Container, Grid, makeStyles } from "@material-ui/core";
 import Layout from "../components/layout";
 import Project from "../components/project";
 import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
+
 const useStyles = makeStyles(theme => ({
     projectsContainer: {
         maxWidth: 802,
@@ -21,17 +23,24 @@ export default ({ data }) => {
     const classes = useStyles();
     const projects = data.allContentfulProjects.edges;
     return (
-        <Layout>
-            <Container maxWidth="md">
-                <Grid container className={classes.projectsContainer} direction="column">
-                    {projects.map(({ node: project}) =>(
-                        <Grid key={project.slug} item className={classes.project}>
-                           <Project project={project}></Project> 
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
-        </Layout>
+        <React.Fragment>
+            <Helmet>
+                <title>{data.site.siteMetadata.title}</title>
+                <meta name="description" content={data.site.siteMetadata.description}/>
+                <meta name="author" content={data.site.siteMetadata.author}/>
+            </Helmet>
+            <Layout>
+                <Container maxWidth="md">
+                    <Grid container className={classes.projectsContainer} direction="column">
+                        {projects.map(({ node: project}) =>(
+                            <Grid key={project.slug} item className={classes.project}>
+                            <Project project={project}></Project> 
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Container>
+            </Layout>
+        </React.Fragment>
     )
 }
 
@@ -51,6 +60,13 @@ query projectQuery {
           slug
         }
       }
+    }
+    site {
+        siteMetadata {
+          title
+          description
+          author
+        }
     }
   }
 `

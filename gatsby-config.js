@@ -9,7 +9,7 @@ module.exports = {
   siteMetadata: {
     title: "Michael Noel",
     description: "A portfolio to present my interests and current projects",
-    author: "Michael Noel"
+    author: "Michael Noel",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -35,6 +35,14 @@ module.exports = {
         accessToken: process.env.ACCESS_TOKEN
       }
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `GatsbyJS`,
+        short_name: `GatsbyJS`,
+        icon: `src/images/icon.png`,
+      }
+    }
   ],
   /* Your site config here */
 }
