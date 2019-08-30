@@ -10,8 +10,24 @@ module.exports = {
     title: "Michael Noel",
     description: "A portfolio to present my interests and current projects",
     author: "Michael Noel",
+    siteUrl: "https://www.mnoel3.com"
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: "https://www.mnoel3.com",
+        sitemap: "https://www.mnoel3.com/sitemap.xml",
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: "https://www.mnoel3.com",
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-transition-link`,
     {

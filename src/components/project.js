@@ -61,7 +61,7 @@ export default (props) => {
             <Grid container direction="row" justify="center">
                 <Grid container item className={classes.gridImageContainer}>
                     <Grid item style={{width:"100%"}}>
-                        <Img className={classes.projectImage} fluid={props.project.projectImage.fluid}/>
+                        <Img className={classes.projectImage} fluid={props.project.projectImage.fluid} alt={props.project.title}/>
                     </Grid>
                 </Grid>
                 <Grid container item direction="column" className={classes.gridContentContainer}>

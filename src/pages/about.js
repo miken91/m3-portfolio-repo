@@ -88,15 +88,15 @@ export default ({data}) => {
             <Grid container item direction="column" className={classes.imageGridContainer} spacing={1}>
               <Grid container item>
                 <Grid item style={{width: "100%"}}>
-                  <Img fluid={images[0].fluid} />
+                  <Img fluid={images[0].fluid} alt="About page image 1" />
                 </Grid>
               </Grid>
               <Grid container direction="row" justify="space-between" className={classes.imageGridContainer} item>
                 <Grid item style={{width: "49%"}}>
-                  <Img fluid={images[1].fluid} />
+                  <Img fluid={images[1].fluid}  alt="About page image 2"/>
                 </Grid>
                 <Grid item style={{width: "49%"}}>
-                  <Img fluid={images[2].fluid} />
+                  <Img fluid={images[2].fluid} alt="About page image 3"/>
                 </Grid>
               </Grid>
             </Grid>

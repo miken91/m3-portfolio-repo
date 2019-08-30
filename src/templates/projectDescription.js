@@ -77,7 +77,7 @@ const ProjectDescription = ({ data }) => {
             <Link className={classes.backButton} to="/projects"> &lt;Back</Link>
             <h1 className={classes.postTitle}>{title}</h1>
             <h2 className={classes.postDate}>{projectDescription}</h2>
-            <Img className={classes.image} fluid={projectImage.fluid}/>
+            <Img className={classes.image} fluid={projectImage.fluid} alt={title}/>
             <div className={classes.buttonContainer}>
                 <Button href={siteLink} variant="contained" size="large" className={classes.button}> See Site </Button>
                 <Button href={githubLink} variant="contained" size="large" className={classes.button}> See Code </Button>
