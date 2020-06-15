@@ -11,7 +11,9 @@ const useStyles = makeStyles(theme => ({
         maxWidth: 398
     },
     gridContentContainer: {
-        maxWidth: 398
+        maxWidth: 398,
+        display: "flex",
+        
     },
     projectImage: {
         margin: "1em"
@@ -31,7 +33,6 @@ const useStyles = makeStyles(theme => ({
         flexWrap: "wrap",
         listStyleType: "none",
         marginTop: "1em",
-        paddingTop: "1em",
         marginLeft: 0,
         paddingLeft: 0,
         "@media only screen and (max-width: 980px)": {
@@ -47,6 +48,7 @@ const useStyles = makeStyles(theme => ({
     },
     projectDescription: {
         textAlign: "left",
+        flexGrow: 1,
         "@media only screen and (max-width: 980px)": {
             textAlign: "center"
         }
@@ -65,7 +67,6 @@ export default (props) => {
                     </Grid>
                 </Grid>
                 <Grid container item direction="column" className={classes.gridContentContainer}>
-                    <Grid container item direction="column">
                         <h1 className={classes.projectTitle}>{props.project.title}</h1>
                         <h3 className={classes.projectDescription}>{props.project.projectDescription}</h3>
                         <ul className={classes.list}> 
@@ -74,7 +75,6 @@ export default (props) => {
                                 <li key={tech} className={classes.listItem}>{tech}</li>
                             )}
                         </ul>
-                    </Grid>
                 </Grid>
             </Grid>
         </ButtonBase>

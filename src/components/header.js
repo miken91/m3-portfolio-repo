@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.secondary.contrastText,
         "@media not all and (pointer: coarse)": {
             "&:hover": {
-                color: theme.palette.primary.main + " !important"
+                color: theme.palette.primary.main
             }
         },
         marginLeft: 8
@@ -38,19 +38,8 @@ const useStyles = makeStyles(theme => ({
     },
     appBar: {
         position: "fixed",
-        background: "transparent",
+        background: theme.palette.secondary.main,
         boxShadow: "none",
-        "@media not all and (pointer: coarse)": {
-            "&:hover": {
-                background: theme.palette.secondary.contrastText,
-                '& #logo' : {
-                    color: theme.palette.secondary.main
-                },
-                '& #menu' : {
-                    color: theme.palette.secondary.main
-                }
-            }
-        },
     },
     menuClosed: {
         position: "fixed",
