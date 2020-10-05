@@ -25,10 +25,11 @@ export default ({ data }) => {
     return (
         <React.Fragment>
             <Helmet>
-                <title>{data.site.siteMetadata.title}</title>
-                <meta name="description" content={data.site.siteMetadata.description}/>
-                <meta name="author" content={data.site.siteMetadata.author}/>
-            </Helmet>
+            <link rel="canonical" href="https://www.mnoel3.com/projects"/>
+            <title>{data.site.siteMetadata.title}</title>
+            <meta name="description" content="Michael Noel - A freelance web developer in St.Louis, Missouri. I build amazingly simply applications to help small businesses develop an online presence. Take a look at some of my previous projects."/>
+            <meta name="author" content={data.site.siteMetadata.author}/>
+        </Helmet>
             <Layout>
                 <Container maxWidth="md">
                     <Grid container className={classes.projectsContainer} direction="column">

@@ -39,8 +39,9 @@ export default ({data}) => {
     return(
     <React.Fragment>
         <Helmet>
+            <link rel="canonical" href="https://www.mnoel3.com/"/>
             <title>{data.site.siteMetadata.title}</title>
-            <meta name="description" content={data.site.siteMetadata.description}/>
+            <meta name="description" content="Michael Noel - A freelance web developer in St.Louis, Missouri. I build amazingly simple applications to help small businesses develop an online presence."/>
             <meta name="author" content={data.site.siteMetadata.author}/>
         </Helmet>
         <Layout>

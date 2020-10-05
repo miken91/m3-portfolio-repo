@@ -78,10 +78,11 @@ export default ({data}) => {
   return (
     <React.Fragment>
       <Helmet>
+            <link rel="canonical" href="https://www.mnoel3.com/about"/>
             <title>{data.site.siteMetadata.title}</title>
-            <meta name="description" content={data.site.siteMetadata.description}/>
+            <meta name="description" content="Michael Noel - A freelance web developer in St.Louis, Missouri. I build amazingly simple applications to help small businesses develop an online presence. Learn more about me."/>
             <meta name="author" content={data.site.siteMetadata.author}/>
-      </Helmet>
+        </Helmet>
       <Layout >
         <Container  maxWidth="md">
           <Grid container direction="row"  justify="space-around" className={classes.gridContainer}>

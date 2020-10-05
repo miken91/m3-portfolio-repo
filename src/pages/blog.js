@@ -44,10 +44,11 @@ const BlogPosts = ({ data }) => {
   return (
     <React.Fragment>
       <Helmet>
+            <link rel="canonical" href="https://www.mnoel3.com/blog"/>
             <title>{data.site.siteMetadata.title}</title>
-            <meta name="description" content={data.site.siteMetadata.description}/>
+            <meta name="description" content="Michael Noel - A freelance web developer in St.Louis, Missouri. I build amazingly simple applications to help small businesses develop an online presence."/>
             <meta name="author" content={data.site.siteMetadata.author}/>
-      </Helmet>
+        </Helmet>
       <Layout>
         <Container maxWidth="sm">
           <h1 className={classes.blogTitle}>My Blog</h1>
